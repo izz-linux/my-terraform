@@ -1,0 +1,12 @@
+cluster_name        = "my-aks-cluster"
+resource_group_name = "rg-aks-example"
+location            = "eastus"
+# NOTE: Example value only. Check supported AKS versions for your region with:
+#   az aks get-versions --location <location> --output table
+kubernetes_version  = "1.28"
+
+tags = {
+  Environment = "dev"
+  Project     = "example"
+  ManagedBy   = "terraform"
+}

@@ -25,7 +25,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   }
 
   dynamic "network_profile" {
-    for_each = var.network_profile != null ? [var.network_profile] : []
+    for_each = length(keys(var.network_profile)) > 0 ? [var.network_profile] : []
     content {
       network_plugin    = network_profile.value.network_plugin
       network_policy    = network_profile.value.network_policy

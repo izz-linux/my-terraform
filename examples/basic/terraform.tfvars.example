@@ -1,0 +1,10 @@
+cluster_name        = "my-aks-cluster"
+resource_group_name = "rg-aks-example"
+location            = "eastus"
+kubernetes_version  = "1.28"
+
+tags = {
+  Environment = "dev"
+  Project     = "example"
+  ManagedBy   = "terraform"
+}

@@ -1,22 +1,28 @@
 # Terraform Modules
 
-Multi-cloud Terraform modules for Kubernetes cluster deployment.
+Multi-cloud Terraform modules for infrastructure deployment.
 
 ## Available Modules
 
 | Cloud | Module | Description |
 |-------|--------|-------------|
-| Azure | [azure](./azure) | Azure Kubernetes Service (AKS) |
+| Azure | [azure-aks](./azure-aks) | Azure Kubernetes Service (AKS) |
+| GCP | [gcp-dataproc](./gcp-dataproc) | Google Cloud Dataproc clusters |
 | AWS | Coming soon | Amazon Elastic Kubernetes Service (EKS) |
 | GCP | Coming soon | Google Kubernetes Engine (GKE) |
 
 ## Usage
 
-Each cloud provider has its own directory with module files and examples.
+Each module has its own directory with Terraform files and examples.
 
 ```hcl
 module "aks" {
-  source = "path/to/azure"
+  source = "github.com/izz-linux/my-terraform-modules//azure-aks"
+  # ...
+}
+
+module "dataproc" {
+  source = "github.com/izz-linux/my-terraform-modules//gcp-dataproc"
   # ...
 }
 ```

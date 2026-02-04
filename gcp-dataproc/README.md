@@ -1,19 +1,45 @@
-# PENN Interactive's Dataproc Module
-# terraform-google-cloud-dataproc
-This repository is to be used as a terraform modulle for creating a Google Cloud Dataproc cluster. It is part of the [thescore-terraform-modules](https://github.com/thescore-terraform-modules) organization, which contains Terraform modules for various Google Cloud resources.
+# GCP Dataproc Terraform Module
+
+A Terraform module for deploying Google Cloud Dataproc clusters with autoscaling support.
+
+## Features
+
+- Configurable master and worker node pools
+- Autoscaling policy with customizable algorithm
+- Secondary (preemptible) worker support
+- Lifecycle management with auto-delete and idle-delete
+- Custom image and software configuration
+- GCS bucket integration for staging and temporary data
+
+## Usage
+
+```hcl
+module "dataproc" {
+  source = "github.com/izz-linux/my-terraform-modules//gcp-dataproc"
+
+  cluster_name = "my-dataproc-cluster"
+  project_id   = "my-gcp-project"
+  region       = "us-central1"
+  env          = "dev"
+
+  labels = {
+    environment = "dev"
+  }
+}
+```
 
 ## Getting Started
-Read the [Terraform documentation](https://developer.hashicorp.com/terraform/docs) to get started with Terraform.
 
-1. Ensure you create unique GCS buckets for storing dataproc staging data, as the bucket name must be globally unique. If you do not provide a `staging_bucket` variable, the module will automatically create a bucket for you, and most likely will be shared with other dataproc clusters. 
-2. The above is true for `temporary_bucket` as well, which is used for storing temporary data during the cluster creation process. If you do not provide a `temporary_bucket` variable, the module will automatically create a bucket for you, and most likely will be shared with other dataproc clusters.
+1. Ensure you create unique GCS buckets for storing dataproc staging data, as the bucket name must be globally unique. If you do not provide a `staging_bucket` variable, the module will automatically create a bucket for you.
+2. The above is true for `temp_bucket` as well, which is used for storing temporary data during the cluster creation process.
 
-## Example Usage
-A provided example demonstrates how to use this module to create a Dataproc cluster. You can find the example in the [examples](https://github.com/thescore-terraform-modules/terraform-google-cloud-dataproc/tree/main/examples) directory.
+## Examples
 
-## Documentation and Further Reading
-- [Publishing Private Modules to TFC](https://developer.hashicorp.com/terraform/cloud-docs/registry/publish-modules)
-- [Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
+- [Basic](./examples) - Basic Dataproc cluster deployment
+
+## License
+
+See [LICENSE](../LICENSE) for details.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements

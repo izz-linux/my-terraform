@@ -1,3 +1,46 @@
+# Basic Dataproc Example
+
+This example demonstrates basic usage of the GCP Dataproc module.
+
+## Prerequisites
+
+- [Terraform](https://www.terraform.io/downloads.html) >= 1.12.0
+- [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
+- A GCP project with Dataproc API enabled
+
+## Usage
+
+1. Authenticate with GCP:
+
+```bash
+gcloud auth application-default login
+gcloud config set project <project-id>
+```
+
+2. Copy the example variables file:
+
+```bash
+cp terraform.tfvars.example terraform.tfvars
+```
+
+3. Edit `terraform.tfvars` with your desired values.
+
+4. Initialize and apply:
+
+```bash
+terraform init
+terraform plan
+terraform apply
+```
+
+## Clean Up
+
+To destroy the resources:
+
+```bash
+terraform destroy
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
